@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<!--
+###################################################
+##Add Block:
+##    all types, 1 output, 2 to inf inputs
+###################################################
+ -->
+<block>
+    <name>dsim</name>
+    <key>controls_dsim</key>
+    <category>controls</category>
+
+    <import>from gnuradio import controls_dsim</import>
+    <make>controls_dsim.dsim()
+self.$(id).set_parameters($P, $I, $D, $n0, $n1, $step, $d0, $d1, $window)
+    </make>
+    <param>
+        <name>IO Type</name>
+        <key>type</key>
+        <type>enum</type>
+        <option><name>FC32_FC32</name><key>fc32_fc32</key></option>
+        <option><name>F32_F32</name><key>f32_f32</key></option>
+        <option><name>SC32_SC32</name><key>sc32_sc32</key></option>
+        <option><name>S32_S32</name><key>s32_s32</key></option>
+        <option><name>SC16_SC16</name><key>sc16_sc16</key></option>
+        <option><name>S16_S16</name><key>s16_s16</key></option>
+        <option><name>SC8_SC8</name><key>sc8_sc8</key></option>
+        <option><name>S8_S8</name><key>s8_s8</key></option>
+    </param>
+    <param>
+        <name>Num Inputs</name>
+        <key>num_inputs</key>
+        <value>1</value>
+        <type>int</type>
+    </param>
+    <param>
+        <name>Vec Length</name>
+        <key>vlen</key>
+        <value>1</value>
+        <type>int</type>
+    </param>
+    
+    <!--
+    Desimulation options
+    -->
+     <param>
+        <name>Controller Gain(P)</name>
+        <key>P</key>
+        <value>0</value>
+        <type>real</type>
+    </param>
+    <param>
+        <name>Tau_I(I)</name>
+        <key>I</key>
+        <value>0</value>
+        <type>real</type>
+    </param>
+    <param>
+        <name>Tau_D(D)</name>
+        <key>D</key>
+        <value>0</value>
+        <type>real</type>
+    </param>
+    
+    <param>
+        <name>n0</name>
+        <key>n0</key>
+        <value>0</value>
+        <type>real</type>
+    </param>
+     
+     <param>
+        <name>n1</name>
+        <key>n1</key>
+        <value>0</value>
+        <type>real</type>
+    </param>
+
+    <param>
+        <name>step</name>
+        <key>step</key>
+        <value>0</value>
+        <type>real</type>
+    </param>
+
+    <param>
+        <name>d0</name>
+        <key>d0</key>
+        <value>0</value>
+        <type>real</type>
+    </param>
+    
+    <param>
+        <name>d1</name>
+        <key>d1</key>
+        <value>0</value>
+        <type>real</type>
+    </param>
+     
+    <param>
+        <name>window</name>
+        <key>window</key>
+        <value>0</value>
+        <type>real</type>
+    </param>
+    
+
+    <!--
+    Check if number of inputs are greater than 0, and if vector length
+    is greater than 0.
+    -->
+    <check>$num_inputs &gt; 0</check>
+    <check>$vlen &gt; 0</check>
+    <sink>
+        <name>in</name>
+        <type>$(str($type).split('_')[0])</type>
+        <vlen>$vlen</vlen>
+        <nports>$num_inputs</nports>
+    </sink>
+    <source>
+        <name>out</name>
+        <type>$(str($type).split('_')[1])</type>
+        <vlen>$vlen</vlen>
+    </source>
+    <doc>
+
+Discrete time simulation
+
+out[i] = in0[i] + in1[i] + in2[i]
+
+The math block adds an arbitrary number of input streams element by element, \
+and produces and single output stream. Elements may be single numbers, \
+or vectors of numbers, depending upon the value of the vec length parameter.
+
+The preload parameter allows users to implement feedback loops with this math block. \
+For example, to enable a feedback of 1 on the 2nd port, set preload to [0, 0, 1]. \
+    </doc>
+</block>
