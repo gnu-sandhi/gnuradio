@@ -27,6 +27,22 @@ GR_PYTHON_INSTALL(
     COMPONENT "scigen_python"
 )
 
+GR_PYTHON_INSTALL(
+    FILES
+    scigen.py
+    DESTINATION ${GR_PYTHON_DIR}/gnuradio/scigen
+    COMPONENT "scigen_python"
+)
+
+
+GR_PYTHON_INSTALL(
+    FILES
+    generic.py
+    DESTINATION ${GR_PYTHON_DIR}/gnuradio/scigen
+    COMPONENT "scigen_python"
+)
+
+
 ########################################################################
 # Handle the unit tests
 ########################################################################
