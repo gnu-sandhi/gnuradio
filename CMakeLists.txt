@@ -261,6 +261,7 @@ add_subdirectory(gr-qtgui)
 add_subdirectory(gr-utils)
 add_subdirectory(gr-wxgui)
 add_subdirectory(gr-blocks)
+add_subdirectory(gr-scigen)
 
 #finalize cpack after subdirs processed
 include(GrPackage)
