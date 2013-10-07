@@ -10,7 +10,7 @@
     <key>scigen_generic</key>
     <category>scigen</category>
 
-    <import>import scigen</import>
+    <import>from gnuradio import scigen</import>
     <make>scigen.generic()
 self.$(id).set_parameters($func_name, $window)
     </make>
