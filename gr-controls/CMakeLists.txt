@@ -22,7 +22,7 @@
 ########################################################################
 #include(GrBoost)
 
-#find_package(SCIGENW3f)
+#find_package(CONTROLSW3f)
 
 ########################################################################
 # Register component
@@ -39,7 +39,7 @@ GR_REGISTER_COMPONENT("gr-controls" ENABLE_GR_CONTROLS
 ########################################################################
 # Begin conditional configuration
 ########################################################################
-if(ENABLE_GR_SCIGEN)
+if(ENABLE_GR_CONTROLS)
 
 ########################################################################
 # Add subdirectories

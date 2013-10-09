@@ -11,7 +11,7 @@ CSIM Block:
     <key>controls_csim</key>
     <category>controls</category>
 
-    <import>from gnuradio import controls_csim</import>
+    <import>import gnuradio.controls.controls_csim as controls_csim</import>
     <make>controls_csim.csim()
 self.$(id).set_parameters($P, $I, $D, $n0, $n1, $d0, $d1, $window)
     </make>

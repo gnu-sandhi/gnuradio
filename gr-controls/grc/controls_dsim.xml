@@ -10,7 +10,7 @@
     <key>controls_dsim</key>
     <category>controls</category>
 
-    <import>from gnuradio import controls_dsim</import>
+    <import>import gnuradio.controls.controls_dsim as controls_dsim</import>
     <make>controls_dsim.dsim()
 self.$(id).set_parameters($P, $I, $D, $n0, $n1, $step, $d0, $d1, $window)
     </make>

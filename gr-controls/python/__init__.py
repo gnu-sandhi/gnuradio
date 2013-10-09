@@ -40,13 +40,8 @@ if _RTLD_GLOBAL != 0:
     sys.setdlopenflags(_dlopenflags|_RTLD_GLOBAL)
 # ----------------------------------------------------------------
 
-
-# import swig generated symbols into the scimod namespace
-from scimod_swig import *
-
 # import any pure python here
-from dsim import dsim
-#
+# Dummy File for future use
 
 # ----------------------------------------------------------------
 # Tail of workaround
