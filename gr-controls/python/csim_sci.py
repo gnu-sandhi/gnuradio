@@ -14,17 +14,12 @@ def csim(P,I,D,n0,n1,d0,d1,u):
         code_string6 = "u="+str((u))+";"
         code_string7 = "y=csim(u,1:length(u),r)"
         code_string = code_string1+code_string2+code_string3+code_string4+code_string5+code_string6+code_string7
-	print(code_string)
 
 	import sciscipy
         sciscipy.eval(code_string)
         y = sciscipy.read("y")
         return y
 	#print "y"
-	import matplotlib.pyplot as plt
-        plt.plot(y)
-	plt.show()
-
 
 if __name__ == "__main__":
         u = [0]*100
