@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=GRC
-Exec=gnuradio-companion %F
+Exec=sandhi %F
 Categories=Development;
 MimeType=application/gnuradio-grc;
 Icon=gnuradio-grc

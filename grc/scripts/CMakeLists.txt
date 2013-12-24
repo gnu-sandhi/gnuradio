@@ -19,7 +19,7 @@
 
 ########################################################################
 GR_PYTHON_INSTALL(
-    PROGRAMS gnuradio-companion
+    PROGRAMS sandhi
     DESTINATION ${GR_RUNTIME_DIR}
     COMPONENT "grc"
 )
