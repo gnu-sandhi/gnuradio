@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!--
+###################################################
+##Add Block:
+##    all types, 1 output, 2 to inf inputs
+###################################################
+ -->
+<block>
+    <name>sbhs_controller</name>
+    <key>sbhs_controller</key>
+    <category>controller</category>
+
+    <import>import gr_controller</import>
+    <make>gr_controller.sbhs_controller()
+self.$(id).set_parameters($P, $I, $d, $a, $b, $window)
+    </make>
+    <param>
+        <name>IO Type</name>
+        <key>type</key>
+        <type>enum</type>
+        <option><name>F32_F32</name><key>f32_f32</key></option>
+        <option><name>S32_S32</name><key>s32_s32</key></option>
+        <option><name>S16_S16</name><key>s16_s16</key></option>
+        <option><name>S8_S8</name><key>s8_s8</key></option>
+    </param>
+
+    <param>
+        <name>Num Inputs</name>
+        <key>num_inputs</key>
+        <value>1</value>
+        <type>int</type>
+    </param>
+     
+    <param>
+        <name>Vec Length</name>
+        <key>vlen</key>
+        <value>1</value>
+        <type>int</type>
+    </param>
+ 
+    <param>
+	<name>Delta T</name>
+	<key>a</key>
+	<value>1</value>
+	<type>real</type>
+    </param>
+
+    <param>
+        <name>P Value</name>
+        <key>P</key>
+        <value>1</value>
+        <type>real</type>
+    </param>
+  
+   <param>
+        <name>I Value</name>
+        <key>I</key>
+        <value>1</value>
+        <type>real</type>
+    </param>
+ 
+     <param>
+        <name>D Value</name>
+        <key>d</key>
+        <value>1</value>
+        <type>real</type>
+    </param>
+ 
+    <param>
+        <name>Set Point</name>
+        <key>b</key>
+        <value>1</value>
+        <type>real</type>
+    </param>
+
+  
+   <param>
+    	<name>Window</name>
+	<key>window</key>
+	<value>1</value>
+	<type>int</type>
+    </param>
+
+
+
+    <!--
+    Check if number of inputs are greater than 0, and if vector length
+    is greater than 0.
+    -->
+    <check>$num_inputs &gt; 0</check>
+    <check>$vlen &gt; 0</check>
+    <sink>
+        <name>in</name>
+        <type>$(str($type).split('_')[0])</type>
+        <vlen>$vlen</vlen>
+        <nports>$num_inputs</nports>
+    </sink>
+    <source>
+        <name>out</name>
+        <type>$(str($type).split('_')[1])</type>
+        <vlen>$vlen</vlen>
+    </source>
+    <doc>
+
+SBHS Controller Block
+> SBHS Controller Block to implement P I D Algorithms
+   </doc>
+</block>
