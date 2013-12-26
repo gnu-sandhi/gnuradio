@@ -18,13 +18,9 @@ self.$(id).set_parameters($func_name, $window)
         <name>IO Type</name>
         <key>type</key>
         <type>enum</type>
-        <option><name>FC32_FC32</name><key>fc32_fc32</key></option>
         <option><name>F32_F32</name><key>f32_f32</key></option>
-        <option><name>SC32_SC32</name><key>sc32_sc32</key></option>
         <option><name>S32_S32</name><key>s32_s32</key></option>
-        <option><name>SC16_SC16</name><key>sc16_sc16</key></option>
         <option><name>S16_S16</name><key>s16_s16</key></option>
-        <option><name>SC8_SC8</name><key>sc8_sc8</key></option>
         <option><name>S8_S8</name><key>s8_s8</key></option>
     </param>
     <param>
@@ -76,6 +72,7 @@ self.$(id).set_parameters($func_name, $window)
     <doc>
 Scilab Generic Block
 
+> Provide one to one function which is available in scilab like("sin") 
 > Check if your scilab function requires multiple inputs
 > Make sure you have same n_input_items when you have multiple inputs
    </doc>
