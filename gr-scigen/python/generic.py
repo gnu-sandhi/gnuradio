@@ -47,7 +47,7 @@ class generic(gras.Block):
 				out_eval_string = out_eval_string + (str(input_items[i][:self.n].tolist()))  + ","  # Replace 10spaces with a singe comma
 						
 		out_eval_string = out_eval_string.rstrip(",") + ')")'
-		print "STRING  ",str(out_eval_string)
+		print "From Scilab",str(out_eval_string)
 		
 		# for functions like sin
 		if n_input_items == 1 and self.n == 1:
@@ -55,8 +55,7 @@ class generic(gras.Block):
 		else:
 			output_items[0] = eval(out_eval_string)
 
-		print "OUT",output_items[0]
-		#print 'SIZE,', output_items[0].size
+		print "OUT ",output_items[0]
 		
 		#Write a for loop for n_inputs
 		for i in range(n_input_items):

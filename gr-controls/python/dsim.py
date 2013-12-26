@@ -26,14 +26,11 @@ class dsim(gras.Block):
 
 	def work(self, input_items, output_items):
 		
-		#n = min(len(input_items[0]), len(output_items[0]))
 		in0 = input_items[0]
 		out = output_items[0]
 		
 		from dsim_sci import discrete_sim
 		#Processing 
-		# Assuming n = 1 input_config(0)=1
-		
 		out[:self.n] = discrete_sim(self.param1, self.param2, self.param3, self.param4,
 					self.param5, self.param6, self.param7, self.param8, in0[:self.n].tolist()) # IMP: in0[:self.n].tolist() passes a python array, without which window cannot be raised above certain value | numpy.array bug
 		

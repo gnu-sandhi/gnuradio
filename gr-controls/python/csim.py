@@ -31,13 +31,12 @@ class csim(gras.Block):
                 out = output_items[0]
 
                 from csim_sci import csim
-                #Processing 
-                # Assuming n = 1 input_config(0)=1
-
+                
+		#Processing 
 		out[:self.n] = csim(self.param1, self.param2, self.param3, self.param4,
                                         self.param5, self.param6, self.param7, in0[:self.n].tolist()) # IMP: in0[:self.n].tolist() passes a python array, without which window cannot be raised above certain value | numpy.array bug
 
-                print "OUT", out[:self.n]
+                print "OUT ", out[:self.n]
 		
                 self.consume(0,self.n) # Consume from port 0 input_items
                 self.produce(0,self.n) # Produce from port 0 output_items

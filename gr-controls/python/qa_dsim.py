@@ -48,15 +48,11 @@ class qa_dsim (gr_unittest.TestCase):
 	dst = gr.vector_sink_f()
 	
 	self.tb.connect(src0, (sqr,0)) # src0(vector_source) -> sqr_input_0
-	#self.tb.connect((sqr,0), (sqr,1)) # sqr_output_0 -> sqr_input_1
 	self.tb.connect(sqr,dst) # sqr_output_0 -> dst (vector_source)
 
 	self.tb.run()
 
 	result_data = dst.data()
-	#print str(result_data), "Result data"
-	#print str(expected_result), "expected "
-	
 	
 	import  matplotlib.pyplot as plt
     	plt.plot(result_data)
