@@ -31,9 +31,6 @@ class gr_sbhs(gras.Block):
 		
 	def work(self, input_items, output_items):
 		
-	#	if len(input_items[0]) != len(input_items[1]):
-	#		raise Exception("Heat value vector and Fan Speed Value vector should be of equal length")
-
 		# Assuming input_items[0] and input_items[1] have same LENGTH
 		for heat_items, fan_items in zip(input_items[0], input_items[1]):
 			
@@ -56,7 +53,7 @@ class gr_sbhs(gras.Block):
 		# Get temperature
 		output_items[0][:1] =  self.new_device.getTemp()
 
-		print "Temperature",output_items[0][:1]
+		print "Temperature: ",output_items[0][:1]
 
 		#Write a for loop for n_inputs
 		for i in range(len(input_items)):

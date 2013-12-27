@@ -14,9 +14,11 @@ class Queue:
 		self.queue.append(obj)
 	else:
 		print "Queue full"
+		
 		### To discard first in queue and append obj anyway ###
 		#self.queue.pop(0)
 		#self.queue.append(obj)
+
     def pop(self):
     	try:
 		return (self.queue.pop(0))

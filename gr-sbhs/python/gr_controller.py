@@ -63,8 +63,7 @@ class sbhs_controller(gras.Block):
 		
 		out[:1] = self.o_0
 			
-		#print output_items[0]
-		self.consume(0,1) # Consume from port 0 input_items
-		self.consume(1,1)
+		self.consume(0,1) # Consumuption from port 0 input_items
+		self.consume(1,1) 
 	
 		self.produce(0,1) # Produce from port 0 output_items

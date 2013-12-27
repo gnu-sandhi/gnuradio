@@ -3,7 +3,6 @@ import os
 from time import localtime, strftime, sleep
 
 MAP_FILE = './map_machine_ids.txt'
-#MAP_FILE = '/var/sbhspyserver/sbhshw/map_machine_ids.txt'
 LOG_FILE = '/var/sbhspylog/sbhserr.log'
 
 OUTGOING_MACHINE_ID  = 252
