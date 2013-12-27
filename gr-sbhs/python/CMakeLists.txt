@@ -65,15 +65,6 @@ GR_PYTHON_INSTALL(
     COMPONENT "sbhs_python"
 )
 
-GR_PYTHON_INSTALL(
-    FILES
-    dsim_sci.py
-    DESTINATION ${GR_PYTHON_DIR}/gnuradio/sbhs
-    COMPONENT "sbhs_python"
-)
-
-
-
 
 ########################################################################
 # Handle the unit tests
