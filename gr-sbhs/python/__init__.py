@@ -43,10 +43,6 @@ if _RTLD_GLOBAL != 0:
 # import any pure python here
 # Dummy File for future use
 
-from scan_machines import *
-print "Scanning Machines"
-scan_machines()
-
 # ----------------------------------------------------------------
 # Tail of workaround
 if _RTLD_GLOBAL != 0:

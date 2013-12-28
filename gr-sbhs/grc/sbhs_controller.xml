@@ -10,7 +10,7 @@
     <key>sbhs_controller</key>
     <category>controller</category>
 
-    <import>import gr_controller</import>
+    <import>import gnuradio.sbhs.gr_controller as gr_controller</import>
     <make>gr_controller.sbhs_controller()
 self.$(id).set_parameters($P, $I, $d, $a, $b, $window)
     </make>

@@ -8,11 +8,16 @@ from scan_machines import *
 class gr_sbhs(gras.Block):
 
 	def __init__(self):
+		
 		gras.Block.__init__(self,
 			name="gr_sbhs",
 			in_sig=[numpy.float32, numpy.float32],
 			out_sig=[numpy.float32])	
 		
+		from scan_machines import *
+		print "Scanning Machines"
+		scan_machines()
+
 		# SBHS init
 		self.new_device = Sbhs()
 		self.new_device.connect(1)

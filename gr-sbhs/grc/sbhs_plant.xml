@@ -10,7 +10,7 @@
     <key>gr_sbhs</key>
     <category>sbhs</category>
 
-    <import>import gr_sbhs</import>
+    <import>import gnuradio.sbhs.gr_sbhs as gr_sbhs</import>
     <make>gr_sbhs.gr_sbhs()
 self.$(id).set_parameters($window)
     </make>
