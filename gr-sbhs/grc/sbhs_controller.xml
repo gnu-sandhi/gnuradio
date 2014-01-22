@@ -8,7 +8,7 @@
 <block>
     <name>sbhs_controller</name>
     <key>sbhs_controller</key>
-    <category>controller</category>
+    <category>SBHS</category>
 
     <import>import gnuradio.sbhs.gr_controller as gr_controller</import>
     <make>gr_controller.sbhs_controller()

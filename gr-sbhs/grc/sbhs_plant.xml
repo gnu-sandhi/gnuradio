@@ -8,7 +8,7 @@
 <block>
     <name>sbhs</name>
     <key>gr_sbhs</key>
-    <category>sbhs</category>
+    <category>SBHS</category>
 
     <import>import gnuradio.sbhs.gr_sbhs as gr_sbhs</import>
     <make>gr_sbhs.gr_sbhs()
