@@ -10,9 +10,8 @@
     <key>gr_serial</key>
     <category>serial</category>
 
-    <import>from gnuradio import gr_ser</import>
-    <make>gr_ser.ser()
-self.$(id).set_parameters($port, $baud, $bytesize, $parity, $stopbits)
+    <import>from gnuradio.serial import gr_serial as gr_serial </import>
+    <make>gr_serial.HierBlock($port, $baud, $bytesize, $parity, $stopbits)
     </make>
     <param>
         <name>IO Type</name>
@@ -83,14 +82,7 @@ self.$(id).set_parameters($port, $baud, $bytesize, $parity, $stopbits)
     -->
     <check>$num_inputs &gt; 0</check>
     <check>$vlen &gt; 0</check>
- 
-   <sink>
-          <name>in</name>
-          <type>$(str($type).split('_')[0])</type>
-          <vlen>$vlen</vlen>
-          <nports>$num_inputs</nports>
-    </sink>
-
+    
     <source>
         <name>out</name>
         <type>$(str($type).split('_')[1])</type>

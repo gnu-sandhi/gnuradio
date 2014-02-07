@@ -34,6 +34,14 @@ GR_PYTHON_INSTALL(
     COMPONENT "serial_python"
 )
 
+GR_PYTHON_INSTALL(
+    FILES
+    ser_functions.py
+    DESTINATION ${GR_PYTHON_DIR}/gnuradio/serial
+    COMPONENT "serial_python"
+)
+
+
 
 
 ########################################################################

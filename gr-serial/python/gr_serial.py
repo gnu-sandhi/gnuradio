@@ -1,45 +1,24 @@
-#!/usr/bin/python
-
 import gras
 import numpy
-# Serial is imported in __init__
-class ser(gras.Block):
-	
+from gnuradio import gr
+from gnuradio import blocks
 
-        def __init__(self):
-                gras.Block.__init__(self,
-                        name="ser",
-                        in_sig=[numpy.float32],
-                        out_sig=[numpy.float32])
-		self.n = 1
-        def set_parameters(self, port, baud, bytesize, parity, stopbits):
-		
-		try:
-			print port
-			self.ser_obj = serial.Serial(port, baud,  bytesize, parity,  stopbits)
-			print("serial found on " + port )
-			self.ser_obj.open()
-		except:
-			print "Couldn't Open Serial Port " + port + " Failed"
-	
+# Source block1 import
+import ser_functions
+from gnuradio import blocks
 
-        def work(self, input_items, output_items):
-		
-		self.n = input_items[0][0]
-                out = output_items[0][:self.n]
-		# Input is size of output_items to be returned
+class HierBlock(gr.hier_block2):
+        def __init__(self, port, baud, bytesize, parity, stopbits):
+                gr.hier_block2.__init__(self, "HierBlock", 
+                        gr.io_signature(1,1,gr.sizeof_float),
+                        gr.io_signature(1,2,gr.sizeof_float))
 
-		for i in range(self.n):
-			
-			# Try catch block to avoid Error
-			# ValueError: invalid literal for int() with base 10: '\xfe354\r\n'
-			try:
-				out[i] = int(self.ser_obj.readline())
-			except:
-				pass
-		
-		print "OUT", out[:self.n]
-			
-		self.produce(0,len(out)) # Produce from port 0 output_items
-		self.consume(0,1) # Consume from port 0 input_items
+                # constant_block initialized
+                self.constant_block = gr.sig_source_f(0, gr.GR_CONST_WAVE,0,0,1)
+                # step_source block initialized
+                self.serial_source = ser_functions.ser()
+                self.serial_source.set_parameters(port, baud, bytesize, parity, stopbits)
+ 
+                # Connect Block1 and Block2
+                self.connect(self, (self.constant_block,0) , (self.serial_source,0), self)
 
