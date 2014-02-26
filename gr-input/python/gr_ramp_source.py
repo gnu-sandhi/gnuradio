@@ -21,7 +21,7 @@ class ramp(gras.Block):
 
         def work(self, input_items, output_items):
 		
-                out = output_items[0][0]
+                out = output_items[0][0:1]
 		input_stream = input_items[0][0]
 		
 		if self.flag:
@@ -37,7 +37,7 @@ class ramp(gras.Block):
 		else:
 
 			self.i = self.i + 1
-			out =self.offset + self.i*input_stream*self.slope
+			out[:1] =self.offset + self.i*input_stream*self.slope
 		
 			print "OUT", out
 			
