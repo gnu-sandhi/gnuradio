@@ -64,6 +64,7 @@ class Block(Element):
 				'hide': 'all',
 			})
 		))
+		
 		Element.__init__(self)
 
 	def get_coordinate(self):
@@ -120,15 +121,35 @@ class Block(Element):
 		if self.is_horizontal(): self.add_area((0, 0), (self.W, self.H))
 		elif self.is_vertical(): self.add_area((0, 0), (self.H, self.W))
 
+
+	def get_key_parent(self, parent_string):
+		import re
+		return str(re.search(r"\((.*?)\)",parent_string).group(1))
+	
 	def create_labels(self):
 		"""Create the labels for the signal block."""
 		Element.create_labels(self)
 		self._bg_color = self.get_enabled() and Colors.BLOCK_ENABLED_COLOR or Colors.BLOCK_DISABLED_COLOR
 		layouts = list()
+		
+		
+		#### Hack Hack Hack
+		'''
+		## DEBUG
+		for i in dir(self.get_params()[0]):
+			print i,"  --> " , self.get_params()[0].__getattribute__(i)
+		'''
+		
+		self.block_list = ['gr_serial']
+
+		#### End Hack
+	
 		#create the main layout
 		layout = gtk.DrawingArea().create_pango_layout('')
 		layouts.append(layout)
+
 		layout.set_markup(Utils.parse_template(BLOCK_MARKUP_TMPL, block=self))
+		
 		self.label_width, self.label_height = layout.get_pixel_size()
 		#display the params
 		markups = [param.get_markup() for param in self.get_params() if param.get_hide() not in ('all', 'part')]
@@ -148,6 +169,8 @@ class Block(Element):
 		gc.set_foreground(self._bg_color)
 		pixmap.draw_rectangle(gc, True, 0, 0, width, height)
 		#draw the layouts
+	
+
 		h_off = 0
 		for i,layout in enumerate(layouts):
 			w,h = layout.get_pixel_size()
@@ -176,10 +199,19 @@ class Block(Element):
 		"""
 		x, y = self.get_coordinate()
 		#draw main block
-		Element.draw(
+		
+		if  self.block_list.__contains__(self.get_key_parent(str(self.get_params()[0]._parent))):
+			self.new_pixbuf = gtk.gdk.pixbuf_new_from_file("/home/manoj/Pictures/new.jpg")
+			Element.draw_image(
+			self, gc, window, bg_color=gtk.gdk.Color(red=65535, blue=0, green=0),
+			border_color=self.is_highlighted() and Colors.HIGHLIGHT_COLOR or Colors.BORDER_COLOR, pixbuf = self.new_pixbuf
+			)
+
+		else:
+			Element.draw(
 			self, gc, window, bg_color=self._bg_color,
 			border_color=self.is_highlighted() and Colors.HIGHLIGHT_COLOR or Colors.BORDER_COLOR,
-		)
+			)
 		#draw label image
 		if self.is_horizontal():
 			window.draw_drawable(gc, self.horizontal_label, 0, 0, x+BLOCK_LABEL_PADDING, y+(self.H-self.label_height)/2, -1, -1)

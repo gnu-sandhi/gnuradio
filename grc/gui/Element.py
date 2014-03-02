@@ -90,6 +90,29 @@ class Element(object):
 		for (x1, y1),(x2, y2) in self._lines_list:
 			gc.set_foreground(border_color)
 			window.draw_line(gc, X+x1, Y+y1, X+x2, Y+y2)
+	
+	def draw_image(self, gc, window, border_color, bg_color, pixbuf):
+		"""
+		Draw in the given window.
+		@param gc the graphics context
+		@param window the gtk window to draw on
+		@param border_color the color for lines and rectangle borders
+		@param bg_color the color for the inside of the rectangle
+		"""
+		X,Y = self.get_coordinate()
+		for (rX,rY),(W,H) in self._areas_list:
+			aX = X + rX
+			aY = Y + rY
+		
+			window.draw_pixbuf(None, pixbuf, 0,0, X,Y)
+			#window.draw_rectangle(gc, True, aX, aY, W, H)
+			#gc.set_foreground(border_color)
+			#window.draw_rectangle(gc, False, aX, aY, W, H)
+
+		for (x1, y1),(x2, y2) in self._lines_list:
+			gc.set_foreground(border_color)
+			window.draw_line(gc, X+x1, Y+y1, X+x2, Y+y2)
+	
 
 	def rotate(self, rotation):
 		"""
