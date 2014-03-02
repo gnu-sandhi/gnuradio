@@ -21,6 +21,7 @@ from Element import Element
 import Utils
 import Colors
 from .. base import odict
+
 from Constants import BORDER_PROXIMITY_SENSITIVITY
 from Constants import \
 	BLOCK_LABEL_PADDING, \
@@ -37,8 +38,8 @@ BLOCK_MARKUP_TMPL="""\
 
 class Block(Element):
 	"""The graphical signal block."""
-
-	def __init__(self):
+	""" image_path from ../python/Block.py"""		
+	def __init__(self, image_path):
 		"""
 		Block contructor.
 		Add graphics related params to the block.
@@ -65,8 +66,8 @@ class Block(Element):
 			})
 		))
 		
-		Element.__init__(self)
-
+		self.image_path= image_path
+		
 	def get_coordinate(self):
 		"""
 		Get the coordinate from the position param.
@@ -131,18 +132,6 @@ class Block(Element):
 		Element.create_labels(self)
 		self._bg_color = self.get_enabled() and Colors.BLOCK_ENABLED_COLOR or Colors.BLOCK_DISABLED_COLOR
 		layouts = list()
-		
-		
-		#### Hack Hack Hack
-		'''
-		## DEBUG
-		for i in dir(self.get_params()[0]):
-			print i,"  --> " , self.get_params()[0].__getattribute__(i)
-		'''
-		
-		self.block_list = ['gr_serial']
-
-		#### End Hack
 	
 		#create the main layout
 		layout = gtk.DrawingArea().create_pango_layout('')
@@ -163,6 +152,7 @@ class Block(Element):
 			self.label_height += h + LABEL_SEPARATION
 		width = self.label_width
 		height = self.label_height
+	
 		#setup the pixmap
 		pixmap = self.get_parent().new_pixmap(width, height)
 		gc = pixmap.new_gc()
@@ -200,13 +190,14 @@ class Block(Element):
 		x, y = self.get_coordinate()
 		#draw main block
 		
-		if  self.block_list.__contains__(self.get_key_parent(str(self.get_params()[0]._parent))):
-			self.new_pixbuf = gtk.gdk.pixbuf_new_from_file("/home/manoj/Pictures/new.jpg")
+		# If the image path is NOT ''
+		if self.image_path != '':
+			self.new_pixbuf = gtk.gdk.pixbuf_new_from_file(self.image_path)
 			Element.draw_image(
-			self, gc, window, bg_color=gtk.gdk.Color(red=65535, blue=0, green=0),
+			self, gc, window, bg_color=self._bg_color,
 			border_color=self.is_highlighted() and Colors.HIGHLIGHT_COLOR or Colors.BORDER_COLOR, pixbuf = self.new_pixbuf
 			)
-
+		
 		else:
 			Element.draw(
 			self, gc, window, bg_color=self._bg_color,

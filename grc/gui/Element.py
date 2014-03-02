@@ -91,6 +91,7 @@ class Element(object):
 			gc.set_foreground(border_color)
 			window.draw_line(gc, X+x1, Y+y1, X+x2, Y+y2)
 	
+	# Function which draws the image
 	def draw_image(self, gc, window, border_color, bg_color, pixbuf):
 		"""
 		Draw in the given window.
@@ -103,10 +104,11 @@ class Element(object):
 		for (rX,rY),(W,H) in self._areas_list:
 			aX = X + rX
 			aY = Y + rY
-		
-			window.draw_pixbuf(None, pixbuf, 0,0, X,Y)
+			
+			# Needs Tweaking
+			window.draw_pixbuf(None, pixbuf, 0,0, aX, aY, -1, -1) # (gc, pixbuf, src_x, src_y, dest_x, dest_y, W, H)
 			#window.draw_rectangle(gc, True, aX, aY, W, H)
-			#gc.set_foreground(border_color)
+			gc.set_foreground(border_color)
 			#window.draw_rectangle(gc, False, aX, aY, W, H)
 
 		for (x1, y1),(x2, y2) in self._lines_list:

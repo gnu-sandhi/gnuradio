@@ -46,16 +46,18 @@ class Block(_Block, _GUIBlock):
 		self._checks = n.findall('check')
 		self._callbacks = n.findall('callback')
 		self._throttle = n.find('throttle') or ''
+                self._image = n.find('image') or ''
+
 		#build the block
 		_Block.__init__(
 			self,
 			flow_graph=flow_graph,
 			n=n,
 		)
-		_GUIBlock.__init__(self)
+		_GUIBlock.__init__(self, self._image)
 
 	def throttle(self): return bool(self._throttle)
-
+	
 	def validate(self):
 		"""
 		Validate this block.

@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 	Top level element.
 	A block contains a name, ...parameters list, and list of IO ports.
  -->
-<!ELEMENT block (name, key, category?, throttle?, import*, var_make?, make, callback*, param*, check*, sink*, source*, doc?, grc_source?)>
+<!ELEMENT block (name, key, category?, image?,  throttle?, import*, var_make?, make, callback*, param*, check*, sink*, source*, doc?, grc_source?)>
 <!--
 	Sub level elements.
  -->
@@ -42,6 +42,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 <!ELEMENT doc (#PCDATA)>
 <!ELEMENT grc_source (#PCDATA)>
 <!ELEMENT name (#PCDATA)>
+<!ELEMENT image (#PCDATA)>
+
 <!ELEMENT key (#PCDATA)>
 <!ELEMENT check (#PCDATA)>
 <!ELEMENT opt (#PCDATA)>
