@@ -29,4 +29,27 @@ install(FILES
     COMPONENT "input_python"
 )
 
+install(FILES
+    Transfer_Function_Numerator.xml
+    DESTINATION ${GRC_BLOCKS_DIR}
+    COMPONENT "input_python"
+)
+
+install(FILES
+    Transfer_Function_Denominator.xml
+    DESTINATION ${GRC_BLOCKS_DIR}
+    COMPONENT "input_python"
+)
+
+install(FILES
+    Calculation_Calculator.xml
+    DESTINATION ${GRC_BLOCKS_DIR}
+    COMPONENT "input_python"
+)
+
+install(FILES
+    Transfer_Function_Transfer_Function.xml
+    DESTINATION ${GRC_BLOCKS_DIR}
+    COMPONENT "input_python"
+)
 

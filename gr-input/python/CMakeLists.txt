@@ -55,6 +55,35 @@ GR_PYTHON_INSTALL(
     COMPONENT "input_python"
 )
 
+GR_PYTHON_INSTALL(
+    FILES
+    Numerator.py
+    DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
+    COMPONENT "input_python"
+)
+
+GR_PYTHON_INSTALL(
+     FILES
+     Denominator.py
+     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
+     COMPONENT "input_python"
+)
+
+GR_PYTHON_INSTALL(
+     FILES
+     Calculator.py
+     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
+     COMPONENT "input_python"
+)
+
+GR_PYTHON_INSTALL(
+     FILES
+     Transfer_Function.py
+     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
+     COMPONENT "input_python"
+)
+
+
 
 
 

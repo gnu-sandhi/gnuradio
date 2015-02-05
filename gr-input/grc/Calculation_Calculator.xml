@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<block>
+  <name>Calculator</name>
+  <key>Calculation_Calculator</key>
+  <category>Calculation</category>
+  <import>import gnuradio.input.Calculator</import>
+  <make>gnuradio.input.Calculator.Calculator($num_inputs)
+self.$(id).set_parameters($Exp,$num_inputs)</make>
+
+<param>
+<name>Expression</name>
+<key>Exp</key>
+<type>string</type>
+</param>
+
+<param>
+<name>Num inputs</name>
+<key>num_inputs</key>
+<value>1</value>
+<type>int</type>
+</param>
+
+  <sink>
+    <name>in0</name>
+    <type>float</type>
+    <nports>$num_inputs</nports>
+  </sink>
+<!--
+  <sink>
+  <name>in1</name>
+  <type>float</type>
+  <nports>4</nports>
+  </sink> -->
+
+  
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>
