@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<block>
+  <name>Numerator</name>
+  <key>Transfer_Function_Numerator</key>
+  <category>Transfer Function</category>
+  <import>import gnuradio.input.Numerator</import>
+  <make>gnuradio.input.Numerator.Numerator($num_inputs)</make>
+
+<param>
+<name>Num inputs</name>
+<key>num_inputs</key>
+<value>1</value>
+<type>int</type>
+</param>
+
+  <sink>
+    <name>in0</name>
+    <type>float</type>
+    <nports>$num_inputs</nports>
+  </sink>
+<!--
+  <sink>
+  <name>in1</name>
+  <type>float</type>
+  <nports>4</nports>
+  </sink> -->
+
+  
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>
