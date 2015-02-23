@@ -37,4 +37,29 @@ self.$(id).set_parameters($Exp,$num_inputs)</make>
     <name>out</name>
     <type>float</type>
   </source>
+
+<doc>
+
+Variable names must be a0,a1,a2 and so on.
+
+You can use maximum 10 variables per block.
+
+Example to add 5 variables:
+
+"a0+a1+a2+a3+a4"
+
+To perform Exponential(power) calculations on operators use the following:
+
+a0**a1 
+
+To perform calculations like sqrt, log or exp use the following:
+
+sqrt(a4)
+
+log(a2)
+
+exp(a8)
+
+</doc>
+
 </block>
