@@ -18,9 +18,12 @@
 # Boston, MA 02110-1301, USA.
 # 
 
-import time
 import numpy
+from numpy import log
+from numpy import exp
+from numpy import sqrt
 from gnuradio import gr
+import time
 
 class Calculator(gr.sync_block):
     """
@@ -31,17 +34,18 @@ class Calculator(gr.sync_block):
 	a = []
 	for i in range(0,number):
             a.append(numpy.float32)
-	print "value of a",a
+#	print "value of a",a
         gr.sync_block.__init__(self,
-            name="add_python",
+            name="Calculator",
             in_sig=a,
             out_sig=[numpy.float32])
-    def set_parameters(self,Exp,num_inputs):
-	self.Exp = Exp
-	self.num_inputs = num_inputs
-
+	    
 	#print "I am over slept"
         #print len(self.ret_array)
+    def set_parameters(self,Exp,num_inputs):
+	self.Exp = Exp
+	#print "This is EXP", Exp
+	self.num_inputs = num_inputs
 
 
     def work(self, input_items, output_items):
@@ -85,8 +89,11 @@ class Calculator(gr.sync_block):
 	    a9 = input_items[9]
 	except IndexError:
 	    pass
-        out = output_items[0]
-        out[:] = eval(self.Exp)
-#	print "i am length",len(output_items[0][:5])
-#	print "value of out",out
+        #out = output_items[0][0]
+	print "This is self.Exp\n",self.Exp
+	
+        output_items[0][:] = eval(self.Exp)
+	#print "This is the output value\n", output_items[0][0]
+	#print "I am the oputput add python\n", eval(self.Exp)
         return len(output_items[0])
+                                              
