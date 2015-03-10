@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<block>
+  <name>Roots</name>
+  <key>Calculation_Roots</key>
+  <category>Calculation</category>
+  <import>import gnuradio.input.Roots</import>
+  <make>gnuradio.input.Roots.Roots($order)</make>
+
+<param>
+   <name>Order of transfer function</name>
+   <key>order</key>
+   <value>samp_rate</value>
+   <type>real</type>
+
+</param>
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+<!--
+  <sink>
+  <name>in1</name>
+  <type>float</type>
+  <nports>4</nports>
+  </sink> -->
+
+  
+  <source>
+    <name>out</name>
+    <type>float</type>
+    <nports>2*$order</nports>
+  </source>
+</block>

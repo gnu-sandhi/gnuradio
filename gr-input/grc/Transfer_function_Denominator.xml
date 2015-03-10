@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<block>
+  <name>Denominator</name>
+  <key>Transfer_function_Denominator</key>
+  <category>Transfer_function</category>
+  <import>import gnuradio.input.Denominator</import>
+  <make>gnuradio.input.Denominator.Denominator($num_inputs)</make>
+
+<param>
+<name>Order of Transfer Function</name>
+<key>num_inputs</key>
+<value>1</value>
+<type>int</type>
+</param>
+
+  <sink>
+    <name>in0</name>
+    <type>float</type>
+    <nports>1+$num_inputs</nports>
+  </sink>
+<!--
+  <sink>
+  <name>in1</name>
+  <type>float</type>
+  <nports>4</nports>
+  </sink> -->
+
+  
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+
+<doc>
+
+This will take the coefficient values for the Denominator.
+
+in00 = value of the coefficient of  s^0
+
+in01 = value of the coefficient of  s^1
+
+in02 = value of the coefficient of s^2
+
+and so on..
+
+</doc>
+
+
+</block>
