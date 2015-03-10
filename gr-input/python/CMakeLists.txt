@@ -92,6 +92,20 @@ GR_PYTHON_INSTALL(
     COMPONENT "input_python"
 )
 
+GR_PYTHON_INSTALL(
+    FILES
+    plot_sink.py
+    DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
+    COMPONENT "input_python"
+)
+
+GR_PYTHON_INSTALL(
+    FILES
+    matplotsink.py
+    DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
+    COMPONENT "input_python"
+)
+
 
 ########################################################################
 # Handle the unit tests
@@ -104,6 +118,8 @@ list(APPEND GR_TEST_PYTHON_DIRS
 list(APPEND GR_TEST_TARGET_DEPS gnuradio-input)
 
 include(GrTest)
+
+
 file(GLOB py_qa_test_files "qa_*.py")
 foreach(py_qa_test_file ${py_qa_test_files})
     get_filename_component(py_qa_test_name ${py_qa_test_file} NAME_WE)

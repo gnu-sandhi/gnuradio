@@ -69,3 +69,9 @@ install(FILES
 )
 
 
+install(FILES
+    plot_sink.xml
+    DESTINATION ${GRC_BLOCKS_DIR}
+    COMPONENT "input_python"
+)
+
