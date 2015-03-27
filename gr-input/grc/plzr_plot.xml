@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <block>
-  <name>plzr_plot</name>
-  <key>plzr_plot</key>
-  <category>Python_Blocks</category>
-  <import>import gnuradio.plzr_plot</import>
-  <make>gnuradio.plzr_plot.plzr_plot($order)</make>
+  <name>Polezero_Plot</name>
+  <key>Polezero_Plot</key>
+  <category>Plots</category>
+  <import>import gnuradio.input.plzr_plot</import>
+  <make>gnuradio.input.plzr_plot.plzr_plot($order)</make>
 
 <param>
    <name>Order of transfer function</name>
