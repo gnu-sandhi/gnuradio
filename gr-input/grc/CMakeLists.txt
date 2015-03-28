@@ -75,3 +75,9 @@ install(FILES
     COMPONENT "input_python"
 )
 
+install(FILES
+    plzr_plot.xml
+    DESTINATION ${GRC_BLOCKS_DIR}
+    COMPONENT "input_python"
+)
+
