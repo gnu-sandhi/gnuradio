@@ -57,6 +57,8 @@ PAGE_TITLE_MARKUP_TMPL = """\
  (ro)#slurp
 #end if
 """
+#global switch
+#switch = True
 
 ############################################################
 # Main window
@@ -102,12 +104,16 @@ class MainWindow(gtk.Window):
 		self.reports_scrolled_window.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
 		self.reports_scrolled_window.add_with_viewport(self.text_display)
 		self.reports_scrolled_window.set_size_request(-1, DEFAULT_REPORTS_WINDOW_WIDTH)
-		self.flow_graph_vpaned.pack2(self.reports_scrolled_window, False) #dont allow resize
+		self.flow_graph_vpaned.pack2(self.reports_scrolled_window, True) #dont allow resize
 		#load preferences and show the main window
 		Preferences.load(platform)
 		self.resize(*Preferences.main_window_size())
+		self.maximize()
 		self.flow_graph_vpaned.set_position(Preferences.reports_window_position())
 		self.hpaned.set_position(Preferences.blocks_window_position())
+		#print self.hpaned.get_position()
+
+		self.hpaned.set_position(1050)
 		self.show_all()
 
 	############################################################
@@ -225,15 +231,19 @@ class MainWindow(gtk.Window):
 		if self.page_to_be_closed.get_proc() or not self.page_to_be_closed.get_saved():
 			self._set_page(self.page_to_be_closed)
 		#unsaved? ask the user
-		if not self.page_to_be_closed.get_saved() and self._save_changes():
+		ask = self._save_changes()
+
+		if not self.page_to_be_closed.get_saved() and ask==gtk.RESPONSE_YES:
 			Actions.FLOW_GRAPH_SAVE() #try to save
 			if not self.page_to_be_closed.get_saved(): #still unsaved?
 				self.page_to_be_closed = None #set the page to be closed back to None
 				return
 		#stop the flow graph if executing
-		if self.page_to_be_closed.get_proc(): Actions.FLOW_GRAPH_KILL()
+		if self.page_to_be_closed.get_proc() and (ask==gtk.RESPONSE_YES or ask==gtk.RESPONSE_NO):
+			 Actions.FLOW_GRAPH_KILL()
 		#remove the page
-		self.notebook.remove_page(self.notebook.page_num(self.page_to_be_closed))
+		if (ask==gtk.RESPONSE_NO or ask==gtk.RESPONSE_YES):
+			self.notebook.remove_page(self.notebook.page_num(self.page_to_be_closed))
 		if ensure and self.notebook.get_n_pages() == 0: self.new_page() #no pages, make a new one
 		self.page_to_be_closed = None #set the page to be closed back to None
 
@@ -289,6 +299,18 @@ class MainWindow(gtk.Window):
 		@return the focus flag
 		"""
 		return self.get_page().get_drawing_area().get_focus_flag()
+	def block_tree_hide(self, switch):
+
+		c = self.hpaned.get_position()
+		a = self.get_size()
+		b = int(a[0]*0.8)
+		if (switch==True):
+			self.hpaned.set_position(a[0])
+			#print self.hpaned.get_position()
+		else:
+			self.hpaned.set_position(b)
+			#print self.hpaned.get_position()
+		
 
 	############################################################
 	# Helpers
@@ -310,7 +332,7 @@ class MainWindow(gtk.Window):
 		return MessageDialogHelper(
 			gtk.MESSAGE_QUESTION, gtk.BUTTONS_YES_NO, 'Unsaved Changes!',
 			'Would you like to save changes before closing?'
-		) == gtk.RESPONSE_YES
+		)
 
 	def _get_files(self):
 		"""

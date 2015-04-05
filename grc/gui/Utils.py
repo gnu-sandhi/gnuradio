@@ -64,7 +64,19 @@ def get_rotated_coordinate(coor, rotation):
 	}[rotation]
 	x, y = coor
 	return (x*cos_r + y*sin_r, -x*sin_r + y*cos_r)
-
+#Funtion added to determine the coordinates after arrow key is pressed
+def get_moved_coordinates(coor, key):
+	x, y = coor
+	if (key==1):
+		x = x - 7
+	elif (key==2):
+		y = y + 7
+	elif (key==3):
+		x = x + 7
+	elif (key==4):
+		y = y - 7
+	return (x, y)
+		
 def get_angle_from_coordinates((x1,y1), (x2,y2)):
 	"""
 	Given two points, calculate the vector direction from point1 to point2, directions are multiples of 90 degrees.

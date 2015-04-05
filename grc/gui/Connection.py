@@ -134,7 +134,7 @@ class Connection(Element):
 		self._sink_coor = sink.get_coordinate()
 		self._source_coor = source.get_coordinate()
 		#draw
-		if self.is_highlighted(): border_color = Colors.HIGHLIGHT_COLOR
+		if self.is_highlighted(): border_color = Colors.HIGHLIGHT_COLOR_BLOCK
 		elif self.get_enabled(): border_color = Colors.CONNECTION_ENABLED_COLOR
 		else: border_color = Colors.CONNECTION_DISABLED_COLOR
 		Element.draw(self, gc, window, bg_color=None, border_color=border_color)

@@ -23,17 +23,19 @@ import gtk
 
 _COLORMAP = gtk.gdk.colormap_get_system() #create all of the colors
 def get_color(color_code): return _COLORMAP.alloc_color(color_code, True, True)
-
-HIGHLIGHT_COLOR = get_color('#00FFFF')
+#colour for the block when highlighted
+HIGHLIGHT_COLOR_BLOCK = get_color('#e2252d')
+#colour when right-click and highlight
+HIGHLIGHT_COLOR = get_color('#b5cbbb')
 BORDER_COLOR = get_color('black')
 #param entry boxes
-PARAM_ENTRY_TEXT_COLOR = get_color('black')
-ENTRYENUM_CUSTOM_COLOR = get_color('#EEEEEE')
+PARAM_ENTRY_TEXT_COLOR = get_color('white')
+ENTRYENUM_CUSTOM_COLOR = get_color('black')
 #flow graph color constants
-FLOWGRAPH_BACKGROUND_COLOR = get_color('#FFF9FF')
+FLOWGRAPH_BACKGROUND_COLOR = get_color('#b5cbbb')
 #block color constants
-BLOCK_ENABLED_COLOR = get_color('#F1ECFF')
-BLOCK_DISABLED_COLOR = get_color('#CCCCCC')
+BLOCK_ENABLED_COLOR = get_color('white')
+BLOCK_DISABLED_COLOR = get_color('#ffff00')
 #connection color constants
 CONNECTION_ENABLED_COLOR = get_color('black')
 CONNECTION_DISABLED_COLOR = get_color('#999999')
