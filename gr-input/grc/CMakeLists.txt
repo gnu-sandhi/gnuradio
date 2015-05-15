@@ -30,13 +30,13 @@ install(FILES
 )
 
 install(FILES
-    Transfer_Function_Numerator.xml
+    Transfer_function_Numerator.xml
     DESTINATION ${GRC_BLOCKS_DIR}
     COMPONENT "input_python"
 )
 
 install(FILES
-    Transfer_Function_Denominator.xml
+    Transfer_function_Denominator.xml
     DESTINATION ${GRC_BLOCKS_DIR}
     COMPONENT "input_python"
 )
@@ -48,8 +48,53 @@ install(FILES
 )
 
 install(FILES
-    Transfer_Function_Transfer_Function.xml
+    Transfer_function_Response.xml
     DESTINATION ${GRC_BLOCKS_DIR}
     COMPONENT "input_python"
 )
+
+install(FILES
+    plot_sink.xml
+    DESTINATION ${GRC_BLOCKS_DIR}
+    COMPONENT "input_python"
+)
+
+install(FILES
+    plzr_plot.xml
+    DESTINATION ${GRC_BLOCKS_DIR}
+    COMPONENT "input_python"
+)
+
+install(FILES
+	Max_val.xml
+    DESTINATION ${GRC_BLOCKS_DIR}
+    COMPONENT "input_python"
+)
+
+install(FILES
+	Calculation_Roots.xml
+    DESTINATION ${GRC_BLOCKS_DIR}
+    COMPONENT "input_python"
+)
+
+install(FILES
+    Transfer_function_Response.xml
+    DESTINATION ${GRC_BLOCKS_DIR}
+    COMPONENT "input_python"
+)
+
+install(FILES
+	Comparator.xml
+    DESTINATION ${GRC_BLOCKS_DIR}
+    COMPONENT "input_python"
+)
+
+install(FILES
+    Bode.xml
+    DESTINATION ${GRC_BLOCKS_DIR}
+    COMPONENT "input_python"
+)
+
+
+
 

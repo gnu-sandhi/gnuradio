@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<block>
+  <name>Polezero_Plot</name>
+  <key>Polezero_Plot</key>
+  <category>Plots</category>
+  <import>import gnuradio.input.plzr_plot</import>
+  <make>gnuradio.input.plzr_plot.plzr_plot($order1,$order2,$order3,$num_tf,$itype)</make>
+
+<param>
+   <name>Number of transfer function</name>
+   <key>num_tf</key>
+   <value>1</value>
+   <type>real</type>
+
+</param>
+
+
+<param>
+   <name>Order of transfer function 1</name>
+   <key>order1</key>
+   <value>1</value>
+   <type>real</type>
+
+</param>
+
+<param>
+   <name>Order of transfer function 2</name>
+   <key>order2</key>
+   <value>1</value>
+   <type>real</type>
+    
+</param>
+
+
+
+<param>
+   <name>Order of transfer function 3</name>
+   <key>order3</key>
+   <value>1</value>
+   <type>real</type>
+    
+</param>
+
+
+<param>
+   <name>Input Types</name>
+   <key>itype</key>
+   <type>enum</type>
+   <option><name>Discrete</name><key>11</key></option>
+   <option><name>Continuous</name><key>12</key></option>
+</param>
+
+
+
+
+
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+    <nports>2*$num_tf</nports>
+</sink>
+
+<doc>
+	This block is used to Plot polezero of transfer function. User can plot upto 3 transfer function's polezero
+	Number of transfer function = number of transfer function user wanted to plot
+	It takes input from Numerator and Denominator blocks output.	
+</doc>
+</block>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<block>
+  <name>Roots</name>
+  <key>Calculation_Roots</key>
+  <category>Calculation</category>
+  <import>import gnuradio.input.Roots</import>
+  <make>gnuradio.input.Roots.Roots($order)</make>
+
+<param>
+   <name>Order of transfer function</name>
+   <key>order</key>
+   <value></value>
+   <type>real</type>
+
+</param>
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+
+  
+  <source>
+    <name>out</name>
+    <type>float</type>
+    <nports>2*$order</nports>
+</source>
+
+<doc>
+	Find out the roots of equation given by array of coefficients 
+</doc>
+
+</block>

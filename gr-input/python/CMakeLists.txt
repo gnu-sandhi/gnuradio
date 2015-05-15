@@ -78,10 +78,64 @@ GR_PYTHON_INSTALL(
 
 GR_PYTHON_INSTALL(
      FILES
-     Transfer_Function.py
+     Bode.py
      DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
      COMPONENT "input_python"
 )
+
+GR_PYTHON_INSTALL(
+	 FILES
+	 Roots.py
+     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
+     COMPONENT "input_python"
+)
+
+GR_PYTHON_INSTALL(
+     FILES
+	 Comparator.py
+     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
+     COMPONENT "input_python"
+)
+
+GR_PYTHON_INSTALL(
+     FILES
+	 Max_val.py
+     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
+     COMPONENT "input_python"
+)
+
+GR_PYTHON_INSTALL(
+     FILES
+     plzr_plt.py
+     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
+     COMPONENT "input_python"
+)
+
+GR_PYTHON_INSTALL(
+     FILES
+	 Response.py
+     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
+     COMPONENT "input_python"
+)
+
+GR_PYTHON_INSTALL(
+	  FILES
+	  matplotsink.py
+	  DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
+	  COMPONENT "input_python"
+)
+
+GR_PYTHON_INSTALL(
+	 FILES
+	 plot_sink.py
+	 DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
+	 COMPONENT "input_python"
+)
+
+
+
+
+
 
 
 

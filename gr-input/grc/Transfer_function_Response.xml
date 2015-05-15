@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <block>
-  <name>Transfer Function</name>
-  <key>Transfer_Function_Transfer_Function</key>
-  <category>Transfer Function</category>
-  <import>import gnuradio.input.Transfer_Function</import>
-  <make>gnuradio.input.Transfer_Function.Transfer_Function($order,$itype,$tstart,$tstop,$tstep)</make>
+  <name>Response</name>
+  <key>Transfer_function_Response</key>
+  <category>Transfer_function</category>
+  <import>import gnuradio.input.Response</import>
+  <make>gnuradio.input.Response.Response($order,$itype,$tstart,$tstop,$tstep)</make>
 
 <param>
    <name>Order of transfer function</name>
@@ -63,4 +63,18 @@
     <name>out</name>
     <type>float</type>
   </source>
+
+<doc>
+
+This block can perfrom three types of system responses. 
+
+Step, Ramp and Impulse.
+
+in0 = Numerator Equation
+
+in1 = Denominator Equation
+
+</doc>
+
+
 </block>
