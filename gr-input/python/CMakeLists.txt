@@ -106,7 +106,7 @@ GR_PYTHON_INSTALL(
 
 GR_PYTHON_INSTALL(
      FILES
-     plzr_plt.py
+     plzr_plot.py
      DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
      COMPONENT "input_python"
 )
