@@ -7,7 +7,7 @@
 <block>
 	<name>Plot Sink</name>
 	<key>plot_sink</key>
-	<category>Plots</category>
+	<category>Single Board Heater System</category>
 	<import>import gnuradio.input.plot_sink</import>
 	<make>#set $parent = $notebook() and 'self.%s.GetPage(%s)'%$notebook() or 'self'
 gnuradio.input.plot_sink.plot_sink_$(type.fcn)(
