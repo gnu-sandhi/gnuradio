@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<block>
+  <name>Max_val</name>
+  <key>Max_val</key>
+  <category>Calculation</category>
+  <import>import gnuradio.input.Max_val</import>
+  <make>gnuradio.input.Max_val.Max_val($tstart,$tstop,$tstep)</make>
+
+<param>
+<name>tstart</name>
+<key>tstart</key>
+<value>0</value>
+<type>real</type>
+</param>
+
+<param>
+<name>tstop</name>
+<key>tstop</key>
+<value>0</value>
+<type>real</type>
+</param>
+
+<param>
+<name>tstep</name>
+<key>tstep</key>
+<value>0</value>
+<type>real</type>
+</param>
+
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+    <nports>1</nports>
+  </sink>
+<!--
+  <sink>
+  <name>in1</name>
+  <type>float</type>
+  <nports>4</nports>
+  </sink> -->
+
+  
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+
+<doc>
+This block finds the maximum value of Response
+</doc>
+
+
+</block>

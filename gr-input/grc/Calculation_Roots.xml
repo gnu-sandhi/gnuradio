@@ -9,7 +9,7 @@
 <param>
    <name>Order of transfer function</name>
    <key>order</key>
-   <value>samp_rate</value>
+   <value></value>
    <type>real</type>
 
 </param>
@@ -18,17 +18,16 @@
     <name>in</name>
     <type>float</type>
   </sink>
-<!--
-  <sink>
-  <name>in1</name>
-  <type>float</type>
-  <nports>4</nports>
-  </sink> -->
 
   
   <source>
     <name>out</name>
     <type>float</type>
     <nports>2*$order</nports>
-  </source>
+</source>
+
+<doc>
+	Find out the roots of equation given by array of coefficients 
+</doc>
+
 </block>
