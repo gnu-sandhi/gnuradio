@@ -70,21 +70,21 @@ class plzr_plot(gr.sync_block):
 	    
     def plot_cont(self,b,c):
 	self.z, self.p, self.k = signal.tf2zpk(b, c) 
-	plt.plot(numpy.real(self.z), numpy.imag(self.z), 'or', label='Zeros of TF 1')
-        plt.plot(numpy.real(self.p), numpy.imag(self.p), 'xb', label='Poles of TF 1')
+	plt.plot(numpy.real(self.z), numpy.imag(self.z), 'or', label='Zeros')
+        plt.plot(numpy.real(self.p), numpy.imag(self.p), 'xb', label='Poles')
 	plt.legend(loc=1,numpoints=1)
 
     def plot_cont1(self,b1,c1):
 	
         self.z1, self.p1, self.k1 = signal.tf2zpk(b1, c1)
-	plt.plot(numpy.real(self.z1), numpy.imag(self.z1), 'og', label='Zeros of TF2')
-        plt.plot(numpy.real(self.p1), numpy.imag(self.p1), 'xm', label='Poles of TF2')
+	plt.plot(numpy.real(self.z1), numpy.imag(self.z1), 'og', label='Zeros')
+        plt.plot(numpy.real(self.p1), numpy.imag(self.p1), 'xm', label='Poles')
 	plt.legend(loc=1,numpoints=1)
 
     def plot_cont2(self,b2,c2):
         self.z2, self.p2, self.k2 = signal.tf2zpk(b2, c2)
-	plt.plot(numpy.real(self.z2), numpy.imag(self.z2), 'oy', label='Zeros of TF3')
-        plt.plot(numpy.real(self.p2), numpy.imag(self.p2), 'xk', label='Poles of TF3')
+	plt.plot(numpy.real(self.z2), numpy.imag(self.z2), 'oy', label='Zeros')
+        plt.plot(numpy.real(self.p2), numpy.imag(self.p2), 'xk', label='Poles')
 	plt.legend(loc=1,numpoints=1)
 
     def common_plot_cont(self):
@@ -93,8 +93,8 @@ class plzr_plot(gr.sync_block):
 	axvline(0, color='0.7')
 	axhline(0, color='0.7') 
 	plt.title('Pole / Zero Plot')
-	plt.ylabel('Real')
-	plt.xlabel('Imaginary')
+	plt.ylabel('Imaginary')
+	plt.xlabel('Real')
 	plt.grid()
 	
     def common_plot_dist(self):
@@ -106,8 +106,8 @@ class plzr_plot(gr.sync_block):
         axvline(0, color='0.7')
         axhline(0, color='0.7')
         plt.title('Pole / Zero Plot')
-        plt.ylabel('Real')
-        plt.xlabel('Imaginary')
+        plt.ylabel('Imaginary')
+        plt.xlabel('Real')
         plt.grid()
 
 	
@@ -119,10 +119,15 @@ class plzr_plot(gr.sync_block):
 	try:
 		for i in range(0,k1):
 		    self.b[i] = input_items[0][i]
+
+#	        for i in reversed(self.b):
+#	            self.z.append(i)
 	        v1 = 0
 	        for i2 in reversed(self.b):
 	            self.b11[v1]=i2
+		    print "i2\n",i2
 	            v1 = v1 + 1
+#	        del self.z[:]
        		print "I am z1\n",self.b11
 
 
@@ -132,11 +137,14 @@ class plzr_plot(gr.sync_block):
 	try:	
 		for j in range(0,k1):
 		    self.c[j] = input_items[1][j]
+#	        for i1 in reversed(self.c):
+#	            self.z2.append(i1)
 	        v = 0
 	        for i3 in reversed(self.c):
 	            self.c11[v] = i3
 	            v = v + 1
-	        print "I  am z3\n", self.c11
+#	        del self.z2[:]
+	      
         except IndexError:
 	        pass
 	
@@ -144,18 +152,28 @@ class plzr_plot(gr.sync_block):
 
 		for i in range(0,k2):
            		 self.b1[i] = input_items[2][i]
+#                for i in reversed(self.b1):
+#                    self.z.append(i)
                 v1 = 0
                 for i2 in reversed(self.b1):
                     self.b12[v1]=i2
+#                    v1 = v1 + 1
+#                del self.z[:]
+#                print "I am z1\n",self.b12
+
 	except IndexError:
 		pass
 	try:
         	for j in range(0,k2):
             		self.c1[j] = input_items[3][j]
+#                for i1 in reversed(self.c1):
+#                    self.z2.append(i1)
                 v = 0
                 for i3 in reversed(self.c1):
                     self.c12[v] = i3
                     v = v + 1
+#                del self.z2[:]
+                print "I  am z3\n", self.c12
 
 
         except IndexError:
@@ -163,20 +181,29 @@ class plzr_plot(gr.sync_block):
 	try:
         	for i in range(0,k3):
             		self.b2[i] = input_items[4][i]
+#                for i in reversed(self.b2):
+#                    self.z.append(i)
                 v1 = 0
                 for i2 in reversed(self.b2):
                     self.b21[v1]=i2
                     v1 = v1 + 1
+#                del self.z[:]
+                print "I am z1\n",self.b21
+
 
 	except IndexError:
 		pass
 	try:
         	for j in range(0,k3):
             		self.c2[j] = input_items[5][j]
+#                for i1 in reversed(self.c2):
+#                    self.z2.append(i1)
                 v = 0
                 for i3 in reversed(self.c2):
                     self.c21[v] = i3
                     v = v + 1
+#                del self.z2[:]
+                print "I  am z3\n", self.c21
 
 	except IndexError:
 		pass
