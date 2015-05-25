@@ -29,12 +29,10 @@ class Denominator(gr.sync_block):
     def __init__(self,num_inputs):
 	number = num_inputs
 	a = []
-#        out_arr=[]
 	for i in range(0,number):
             a.append(numpy.float32)
-	print "value of a",a
         gr.sync_block.__init__(self,
-            name="denomenator",
+            name="Denominator",
             in_sig=a,
             out_sig=[numpy.float32])
 
@@ -80,17 +78,14 @@ class Denominator(gr.sync_block):
 	    b[9] = input_items[9][0]
 	except IndexError:
 	    pass
-    	out = output_items[0][:5]
+	
+	var = len(input_items)
+    	out = output_items[0][:var]
         out_arr=[]
         time.sleep(0.001)
         
-#        print "value of b",b
         for i in range(0,len(input_items)):
             out_arr.append(b[i])
-#            print "I am input items",input_items[i][0]
-#        print "out_array",out_arr
         out[:] = out_arr 
-#	print "i am length",len(output_items[0][:])
-#	print "value of out",out
         return len(output_items[0][:])
 
