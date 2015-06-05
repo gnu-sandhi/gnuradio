@@ -44,8 +44,8 @@ register_messenger(sys.stdout.write)
 # Special functions for specific program functionalities
 ###########################################################################
 def send_init(platform):
-	send("""<<< Welcome to %s %s optimized for Sandhi>>>\n"""%(platform.get_name(), platform.get_version()))
-
+	#send("""<<< Welcome to %s %s optimized for Sandhi>>>\n"""%(platform.get_name(), platform.get_version()))
+	send("""<<< Welcome to Sandhi %s>>>\n"""%(platform.get_version()))
 def send_page_switch(file_path):
 	send('\nShowing: "%s"\n'%file_path)
 
