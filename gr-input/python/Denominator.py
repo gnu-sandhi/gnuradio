@@ -22,14 +22,18 @@ import time
 import numpy
 from gnuradio import gr
 
+## Denominator Block which takes N no. of inputs and convert them into a single array which have N no. of elements
+## N<=10
+
 class Denominator(gr.sync_block):
     """
     docstring for block add_python
     """
     def __init__(self,num_inputs):
-	number = num_inputs
+	self.number = num_inputs+1
 	a = []
-	for i in range(0,number):
+        self.b=[0]*self.number
+	for i in range(0,self.number):
             a.append(numpy.float32)
         gr.sync_block.__init__(self,
             name="Denominator",
@@ -37,55 +41,14 @@ class Denominator(gr.sync_block):
             out_sig=[numpy.float32])
 
     def work(self, input_items, output_items):
-        b=[0,0,0,0,0,0,0,0,0,0]
-	try:
-            b[0] = input_items[0][0]
-	except IndexError:
-	    pass
-	try:
-            b[1] = input_items[1][0]
-	except IndexError:
-	    pass
-	try:
-	    b[2] = input_items[2][0]
-	except IndexError:
-	    pass
-	try:
-	    b[3] = input_items[3][0]
-	except IndexError:
-	    pass
-	try:
-	    b[4] = input_items[4][0]
-	except IndexError:
-	    pass
-	try:
-	    b[5] = input_items[5][0]
-	except IndexError:
-	    pass
-	try:
-	    b[6] = input_items[6][0]
-	except IndexError:
-	    pass
-	try:
-	    b[7] = input_items[7][0]
-	except IndexError:
-	    pass
-	try:
-	    b[8] = input_items[8][0]
-	except IndexError:
-	    pass
-	try:
-	    b[9] = input_items[9][0]
-	except IndexError:
-	    pass
-	
-	var = len(input_items)
-    	out = output_items[0][:var]
+        for i in range(0,self.number):
+            b[i] = input_items[i][0]
+    	out = output_items[0][:self.number]
         out_arr=[]
         time.sleep(0.001)
         
-        for i in range(0,len(input_items)):
-            out_arr.append(b[i])
+        for i in range(0,self.number):
+            out_arr.append(self.b[i])
         out[:] = out_arr 
         return len(output_items[0][:])
 

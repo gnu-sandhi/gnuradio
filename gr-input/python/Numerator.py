@@ -29,6 +29,7 @@ class Numerator(gr.sync_block):
     def __init__(self,num_inputs):
 	self.number = num_inputs+1
 	a = []
+        self.b = [0]*self.number
 	for i in range(0,self.number):
             a.append(numpy.float32)
         gr.sync_block.__init__(self,
@@ -37,54 +38,16 @@ class Numerator(gr.sync_block):
             out_sig=[numpy.float32])
 
     def work(self, input_items, output_items):
-        b=[0,0,0,0,0,0,0,0,0,0]
-	try:
-            b[0] = input_items[0][0]
-	except IndexError:
-	    pass
-	try:
-            b[1] = input_items[1][0]
-	except IndexError:
-	    pass
-	try:
-	    b[2] = input_items[2][0]
-	except IndexError:
-	    pass
-	try:
-	    b[3] = input_items[3][0]
-	except IndexError:
-	    pass
-	try:
-	    b[4] = input_items[4][0]
-	except IndexError:
-	    pass
-	try:
-	    b[5] = input_items[5][0]
-	except IndexError:
-	    pass
-	try:
-	    b[6] = input_items[6][0]
-	except IndexError:
-	    pass
-	try:
-	    b[7] = input_items[7][0]
-	except IndexError:
-	    pass
-	try:
-	    b[8] = input_items[8][0]
-	except IndexError:
-	    pass
-	try:
-	    b[9] = input_items[9][0]
-	except IndexError:
-	    pass
-	var = self.number
-    	o1 = output_items[0][:var]
+        for i in range(0,self.number):
+	    try:
+                self.b[i] = input_items[i][0]
+	    except IndexError:
+	        pass
+    	o1 = output_items[0][:self.number]
         out_arr=[]
         time.sleep(0.001)
         
-        for i in range(0,var):
-            out_arr.append(b[i])
+        for i in range(0,self.number):
+            out_arr.append(self.b[i])
         o1[:] = out_arr
-        print "out value\n",o1
         return len(output_items[0][:])
