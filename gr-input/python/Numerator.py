@@ -27,9 +27,9 @@ class Numerator(gr.sync_block):
     docstring for block add_python
     """
     def __init__(self,num_inputs):
-	number = num_inputs
+	self.number = num_inputs+1
 	a = []
-	for i in range(0,number):
+	for i in range(0,self.number):
             a.append(numpy.float32)
         gr.sync_block.__init__(self,
             name="Numerator",
@@ -78,13 +78,13 @@ class Numerator(gr.sync_block):
 	    b[9] = input_items[9][0]
 	except IndexError:
 	    pass
-	var = len(input_items)
+	var = self.number
     	o1 = output_items[0][:var]
         out_arr=[]
         time.sleep(0.001)
         
-        for i in range(0,len(input_items)):
+        for i in range(0,var):
             out_arr.append(b[i])
-        o1[:] = out_arr 
+        o1[:] = out_arr
+        print "out value\n",o1
         return len(output_items[0][:])
-#	return 5
