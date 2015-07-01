@@ -140,6 +140,7 @@ class Block(Element):
 		layout.set_markup(Utils.parse_template(BLOCK_MARKUP_TMPL, block=self))
 		
 		self.label_width, self.label_height = layout.get_pixel_size()
+		height_rect = self.label_height
 		#display the params
 		markups = [param.get_markup() for param in self.get_params() if param.get_hide() not in ('all', 'part')]
 		if markups:
@@ -149,6 +150,7 @@ class Block(Element):
 			layouts.append(layout)
 			w,h = layout.get_pixel_size()
 			self.label_width = max(w, self.label_width)
+			#print w,self.label_width
 			self.label_height += h + LABEL_SEPARATION
 		width = self.label_width
 		height = self.label_height
@@ -159,7 +161,7 @@ class Block(Element):
 		gc.set_foreground(self._bg_color)
 		pixmap.draw_rectangle(gc, True, 0, 0, width, height)
 		#draw the layouts
-	
+	#	width_rect=width
 
 		h_off = 0
 		for i,layout in enumerate(layouts):
@@ -169,6 +171,9 @@ class Block(Element):
 			pixmap.draw_layout(gc, w_off, h_off, layout)
 			h_off = h + h_off + LABEL_SEPARATION
 		#create vertical and horizontal pixmaps
+		gc.set_foreground(Colors.BORDER_COLOR)
+		pixmap.draw_rectangle(gc,False,0,0,width-1,height_rect-1)
+		gc.set_foreground(self._bg_color)
 		self.horizontal_label = pixmap
 		if self.is_vertical():
 			self.vertical_label = self.get_parent().new_pixmap(height, width)
@@ -195,13 +200,13 @@ class Block(Element):
 			self.new_pixbuf = gtk.gdk.pixbuf_new_from_file(self.image_path)
 			Element.draw_image(
 			self, gc, window, bg_color=self._bg_color,
-			border_color=self.is_highlighted() and Colors.HIGHLIGHT_COLOR or Colors.BORDER_COLOR, pixbuf = self.new_pixbuf
+			border_color=self.is_highlighted() and Colors.HIGHLIGHT_COLOR_BLOCK or Colors.BORDER_COLOR, pixbuf = self.new_pixbuf
 			)
 		
 		else:
 			Element.draw(
 			self, gc, window, bg_color=self._bg_color,
-			border_color=self.is_highlighted() and Colors.HIGHLIGHT_COLOR or Colors.BORDER_COLOR,
+			border_color=self.is_highlighted() and Colors.HIGHLIGHT_COLOR_BLOCK or Colors.BORDER_COLOR,
 			)
 		#draw label image
 		if self.is_horizontal():

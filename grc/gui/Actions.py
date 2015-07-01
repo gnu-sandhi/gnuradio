@@ -168,17 +168,42 @@ ELEMENT_DELETE = Action(
 	keypresses=(gtk.keysyms.Delete, NO_MODS_MASK),
 )
 BLOCK_MOVE = Action()
-BLOCK_ROTATE_CCW = Action(
-	label='Rotate Counterclockwise',
-	tooltip='Rotate the selected blocks 90 degrees to the left',
-	stock_id=gtk.STOCK_GO_BACK,
-	keypresses=(gtk.keysyms.Left, NO_MODS_MASK),
+BLOCK_MOVE_RIGHT_KEYBOARD = Action(
+	label= 'Move Right',
+	tooltip = 'Move the selected to the right',
+	stock_id=gtk.STOCK_GO_FORWARD,
+	keypresses=(gtk.keysyms.Right, NO_MODS_MASK),
 )
+BLOCK_MOVE_LEFT_KEYBOARD = Action(
+        label= 'Move Left',
+        tooltip = 'Move the selected to the left',
+        stock_id=gtk.STOCK_GO_BACK,
+        keypresses=(gtk.keysyms.Left, NO_MODS_MASK),
+)
+BLOCK_MOVE_UP_KEYBOARD = Action(
+        label= 'Move Up',
+        tooltip = 'Move the selected up',
+        stock_id=gtk.STOCK_GO_UP,
+        keypresses=(gtk.keysyms.Up, NO_MODS_MASK),
+)
+BLOCK_MOVE_DOWN_KEYBOARD = Action(
+        label= 'Move Down',
+        tooltip = 'Move the selected down',
+        stock_id=gtk.STOCK_GO_DOWN,
+        keypresses=(gtk.keysyms.Down, NO_MODS_MASK),
+)
+BLOCK_ROTATE_CCW = Action(
+        label='Rotate Counterclockwise',
+        tooltip='Rotate the selected blocks 90 degrees to the left',
+        stock_id=gtk.STOCK_GO_BACK,
+        keypresses=(gtk.keysyms.Left, gtk.gdk.CONTROL_MASK),
+)
+
 BLOCK_ROTATE_CW = Action(
 	label='Rotate Clockwise',
 	tooltip='Rotate the selected blocks 90 degrees to the right',
 	stock_id=gtk.STOCK_GO_FORWARD,
-	keypresses=(gtk.keysyms.Right, NO_MODS_MASK),
+	keypresses=(gtk.keysyms.Right, gtk.gdk.CONTROL_MASK),
 )
 BLOCK_PARAM_MODIFY = Action(
 	label='_Properties',
@@ -249,6 +274,13 @@ FLOW_GRAPH_GEN = Action(
 	stock_id=gtk.STOCK_CONVERT,
 	keypresses=(gtk.keysyms.F5, NO_MODS_MASK),
 )
+BLOCK_TREE_HIDE = Action(
+        label='_Hide',
+        tooltip='Hide the Block Tree',
+        stock_id=gtk.STOCK_GOTO_LAST,
+        keypresses=(gtk.keysyms.h, gtk.gdk.CONTROL_MASK),
+)
+
 FLOW_GRAPH_EXEC = Action(
 	label='_Execute',
 	tooltip='Execute the flow graph',
@@ -274,10 +306,10 @@ PORT_CONTROLLER_INC = Action(
 	keypresses=(gtk.keysyms.plus, NO_MODS_MASK, gtk.keysyms.KP_Add, NO_MODS_MASK),
 )
 BLOCK_INC_TYPE = Action(
-	keypresses=(gtk.keysyms.Down, NO_MODS_MASK),
+	keypresses=(gtk.keysyms.Down, gtk.gdk.CONTROL_MASK),
 )
 BLOCK_DEC_TYPE = Action(
-	keypresses=(gtk.keysyms.Up, NO_MODS_MASK),
+	keypresses=(gtk.keysyms.Up, gtk.gdk.CONTROL_MASK),
 )
 RELOAD_BLOCKS = Action(
 	label='Reload _Blocks',

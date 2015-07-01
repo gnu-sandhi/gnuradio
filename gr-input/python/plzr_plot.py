@@ -22,52 +22,25 @@ import time
 import numpy
 from gnuradio import gr
 import sciscipy
-import scipy.signal as signal
-import matplotlib.pyplot as plt
-from matplotlib import patches
-from matplotlib.pyplot import axvline, axhline
-
-
 
 class plzr_plot(gr.sync_block):
     """
     docstring for block add_python
     """
-    def __init__(self,order1,order2,order3,num_tf,itype):
+    def __init__(self,order):
+	sys.setrecursionlimit(2000)
 	a = []
-        for i in range(0,2*num_tf):
-            a.append(numpy.float32)
-	print "This is a", a
+#	self.flag = 0
+	self.b = [0,0,0,0,0,0]
+	self.c = [0,0,0,0,0,0]
 	self.i = 0
-	self.max_2 = [0,0,0,0]
-	self.z = []
-	self.z1 = [0,0,0,0]
-	self.z2 = []
-	self.z3= [0,0,0,0]
-	self.num_tf = num_tf
-	self.itype = itype
-        self.order1=int(order1)+1
-	self.order2=int(order2)+1
-	self.order3=int(order3)+1
-
-	self.b = self.order1*[0]
-	self.b11 = self.order1*[0]
-	self.c = self.order1*[0]
-	self.c11 = self.order1*[0]
-	self.b1 = self.order2*[0]
-	self.b12 = self.order2*[0]
-	self.c1 = self.order2*[0]
-	self.c12 = self.order2*[0]
-	self.b2 = self.order3*[0]
-	self.b21 = self.order3*[0]
-	self.c2 = self.order3*[0]
-	self.c21 = self.order3*[0]
-
+        self.order=int(order)+1
         gr.sync_block.__init__(self,
             name="plzr_plot",
-            in_sig=[numpy.float32,numpy.float32,numpy.float32,numpy.float32],
+            in_sig=[numpy.float32,numpy.float32],
             out_sig=None)
 	    
+<<<<<<< HEAD
     def plot_cont(self,b,c):
 	self.z, self.p, self.k = signal.tf2zpk(b, c) 
 	plt.plot(numpy.real(self.z), numpy.imag(self.z), 'or', label='Zeros')
@@ -266,8 +239,33 @@ class plzr_plot(gr.sync_block):
 		self.plot_cont2(self.b21,self.c21)
 		plt.ion()
 		plt.draw()
+=======
+    def plot(self,b,c):
+        string1 = "s=%s; h=syslin('c',"
+        string2 = str(b[4])+"*s^4+"+str(b[3])+"*s^3+"+str(b[2])+"*s^2+"+str(b[1])+"*s+"+str(b[0])+","
+        string3 = str(c[4])+"*s^4+"+str(c[3])+"*s^3+"+str(c[2])+"*s^2+"+str(c[1])+"*s+"+str(c[0])+");"
+	string4 = "plzr(h);"
+  
+	string = string1 + string2 +string3 + string4
+        sciscipy.eval(string)
+
+
+	
+    def work(self, input_items, output_items):
+	print "I am input", input_items
+	print "I am output", output_items
+	k = self.order
+	for i in range(0,k):
+	    self.b[i] = input_items[0][i]
+	print "I am value of b\n",self.b    
+	
+	
+	for j in range(0,k):
+	    self.c[j] = input_items[1][j]
+	print "I am vlaue of c\n", self.c
+>>>>>>> refs/remotes/origin/master
 		
-	plt.clf()	
+        self.plot(self.b,self.c)	
         in0 = input_items[0]
         # <+signal processing here+>
         return len(input_items[0])

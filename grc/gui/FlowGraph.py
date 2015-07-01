@@ -89,6 +89,9 @@ class FlowGraph(Element):
 		h_adj = self.get_scroll_pane().get_hadjustment()
 		v_adj = self.get_scroll_pane().get_vadjustment()
 		if coor is None: coor = (
+			#Change 3
+			#int(0.5*h_adj.page_size + h_adj.get_value()),
+                        #int(0.5*v_adj.page_size + v_adj.get_value()),
 			int(random.uniform(.25, .75)*h_adj.page_size + h_adj.get_value()),
 			int(random.uniform(.25, .75)*v_adj.page_size + v_adj.get_value()),
 		)
@@ -141,8 +144,14 @@ class FlowGraph(Element):
 		#recalc the position
 		h_adj = self.get_scroll_pane().get_hadjustment()
 		v_adj = self.get_scroll_pane().get_vadjustment()
-		x_off = h_adj.get_value() - x_min + h_adj.page_size/4
-		y_off = v_adj.get_value() - y_min + v_adj.page_size/4
+		#Change5
+		#rootwin = widget.get_screen().get_root_window()
+ 		#x, y, mods = rootwin.get_pointer()
+		r_off = int(random.uniform(.1, .7)*100) #random offset value
+                x_off = r_off
+                y_off = r_off
+		#x_off = h_adj.get_value() - x_min + h_adj.page_size/5
+		#y_off = v_adj.get_value() - y_min + v_adj.page_size/5
 		#create blocks
 		for block_n in blocks_n:
 			block_key = block_n.find('key')
@@ -233,7 +242,7 @@ class FlowGraph(Element):
 			x, y = selected_block.get_coordinate()
 			min_x, min_y = min(min_x, x), min(min_y, y)
 			max_x, max_y = max(max_x, x), max(max_y, y)
-		#calculate center point of slected blocks
+		#calculate center point of selected blocks
 		ctr_x, ctr_y = (max_x + min_x)/2, (max_y + min_y)/2
 		#rotate the blocks around the center point
 		for selected_block in self.get_selected_blocks():
@@ -241,6 +250,51 @@ class FlowGraph(Element):
 			x, y = Utils.get_rotated_coordinate((x - ctr_x, y - ctr_y), rotation)
 			selected_block.set_coordinate((x + ctr_x, y + ctr_y))
 		return True
+	def move_selected_keyboard(self, key):
+                """
+                Move the selected block in the reuired direction.
+                @param key for direction it needs to be moved
+                @return true if changed, otherwise false.
+                """
+                if not self.get_selected_blocks(): return False
+                #initialize min and max coordinates
+                min_x, min_y = self.get_selected_block().get_coordinate()
+                max_x, max_y = self.get_selected_block().get_coordinate()
+                #rotate each selected block, and find min/max coordinate
+                for selected_block in self.get_selected_blocks():
+                        #update the min/max coordinate
+                        x, y = selected_block.get_coordinate()
+                        min_x, min_y = min(min_x, x), min(min_y, y)
+                        max_x, max_y = max(max_x, x), max(max_y, y)
+                #calculate center point of selected blocks
+                ctr_x, ctr_y = (max_x + min_x)/2, (max_y + min_y)/2
+
+		#perform autoscrolling
+		width, height = self.get_size()
+		#x, y = coordinate
+		h_adj = self.get_scroll_pane().get_hadjustment()
+		v_adj = self.get_scroll_pane().get_vadjustment()
+		for pos, length, adj, adj_val, adj_len in (
+			(x, width, h_adj, h_adj.get_value(), h_adj.page_size),
+			(y, height, v_adj, v_adj.get_value(), v_adj.page_size),
+		):
+			#scroll if we moved near the border
+			if pos-adj_val > adj_len-SCROLL_PROXIMITY_SENSITIVITY and adj_val+SCROLL_DISTANCE < length-adj_len:
+				adj.set_value(adj_val+SCROLL_DISTANCE)
+				adj.emit('changed')
+			elif pos-adj_val < SCROLL_PROXIMITY_SENSITIVITY:
+				adj.set_value(adj_val-SCROLL_DISTANCE)
+				adj.emit('changed')
+
+
+                #move the blocks around the center point
+                for selected_block in self.get_selected_blocks():
+                        x, y = selected_block.get_coordinate()
+			x, y = Utils.get_moved_coordinates((x, y), key)	
+                        selected_block.set_coordinate((x, y))
+		return True
+
+                
 
 	def remove_selected(self):
 		"""
@@ -522,3 +576,4 @@ class FlowGraph(Element):
 		self.set_coordinate((x, y))
 		#queue draw for animation
 		self.queue_draw()
+

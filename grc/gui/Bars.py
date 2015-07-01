@@ -49,9 +49,11 @@ TOOLBAR_LIST = (
 	None,
 	Actions.BLOCK_ENABLE,
 	Actions.BLOCK_DISABLE,
-    None,
-    Actions.RELOAD_BLOCKS,
-    Actions.OPEN_HIER,
+    	None,
+    	Actions.RELOAD_BLOCKS,
+    	Actions.OPEN_HIER,
+	None,
+	Actions.BLOCK_TREE_HIDE,
 )
 
 ##The list of actions and categories for the menu bar.
@@ -112,10 +114,23 @@ class Toolbar(gtk.Toolbar):
 		gtk.Toolbar.__init__(self)
 		self.set_style(gtk.TOOLBAR_ICONS)
 		for action in TOOLBAR_LIST:
-			if action: #add a tool item
+
+			"""if action == Actions.BLOCK_TREE_HIDE: #add a tool item
+                                #self.insert(action.create_tool_item(), 31)
+				tool = gtk.ToolItem()
+				tool.set_expand(True)
+				tool.selftool = gtk.SeparatorToolItem()
+				tool.selftool.set_draw(False)
+				self.add(tool.selftool)
+
 				self.add(action.create_tool_item())
-				#this reset of the tooltip property is required (after creating the tool item) for the tooltip to show
-				action.set_property('tooltip', action.get_property('tooltip'))
+				
+                                #this reset of the tooltip property is required (after creating the tool item) for the tooltip to show
+                                action.set_property('tooltip', action.get_property('tooltip'))"""
+                        if action: #add a tool item
+                                self.add(action.create_tool_item())
+                                #this reset of the tooltip property is required (after creating the tool item) for the tooltip to show
+                                action.set_property('tooltip', action.get_property('tooltip'))
 			else: self.add(gtk.SeparatorToolItem())
 
 class MenuBar(gtk.MenuBar):
