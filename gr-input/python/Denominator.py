@@ -42,7 +42,7 @@ class Denominator(gr.sync_block):
 
     def work(self, input_items, output_items):
         for i in range(0,self.number):
-            b[i] = input_items[i][0]
+            self.b[i] = input_items[i][0]
     	out = output_items[0][:self.number]
         out_arr=[]
         time.sleep(0.001)
