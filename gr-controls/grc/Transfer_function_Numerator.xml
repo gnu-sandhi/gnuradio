@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<block>
+  <name>Numerator</name>
+  <key>Transfer_function_Numerator</key>
+  <category>Transfer_function</category>
+  <import>import gnuradio.input.Numerator</import>
+  <make>gnuradio.input.Numerator.Numerator($num_inputs)</make>
+
+<param>
+<name>Order of Transfer Function</name>
+<key>num_inputs</key>
+<value>1</value>
+<type>int</type>
+</param>
+
+  <sink>
+    <name>in0</name>
+    <type>float</type>
+    <nports>1+$num_inputs</nports>
+  </sink>
+
+  
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+
+<doc>
+
+This will take the coefficient values for the numerator.
+
+in00 = value of the coefficient of  s^0
+
+in01 = value of the coefficient of  s^1
+
+in02 = value of the coefficient of s^2
+
+and so on..
+
+</doc>
+
+</block>
