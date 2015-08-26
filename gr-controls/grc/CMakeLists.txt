@@ -28,3 +28,19 @@ install(FILES
     DESTINATION ${GRC_BLOCKS_DIR}
     COMPONENT "controls_python"
 )
+
+install(FILES
+	Transfer_function_Numerator.xml
+    DESTINATION ${GRC_BLOCKS_DIR}
+    COMPONENT "controls_python"
+)
+
+install(FILES
+	Transfer_function_Denominator.xml
+    DESTINATION ${GRC_BLOCKS_DIR}
+    COMPONENT "controls_python"
+)
+
+
+
+
