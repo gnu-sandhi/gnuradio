@@ -72,6 +72,30 @@ GR_PYTHON_INSTALL(
     COMPONENT "controls_python"
 )
 
+GR_PYTHON_INSTALL(
+    FILES
+	Numerator.py
+    DESTINATION ${GR_PYTHON_DIR}/gnuradio/controls
+    COMPONENT "controls_python"
+)
+
+GR_PYTHON_INSTALL(
+    FILES
+	Denominator.py
+    DESTINATION ${GR_PYTHON_DIR}/gnuradio/controls
+    COMPONENT "controls_python"
+)
+
+GR_PYTHON_INSTALL(
+    FILES
+	Response.py
+    DESTINATION ${GR_PYTHON_DIR}/gnuradio/controls
+    COMPONENT "controls_python"
+)
+
+
+
+
 
 
 
