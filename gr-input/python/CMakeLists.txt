@@ -23,110 +23,22 @@ include(GrPython)
 GR_PYTHON_INSTALL(
     FILES
     __init__.py
-    DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
-    COMPONENT "input_python"
-)
-
-GR_PYTHON_INSTALL(
-    FILES
     gr_ramp_source.py
-    DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
-    COMPONENT "input_python"
-)
-
-GR_PYTHON_INSTALL(
-    FILES
     gr_step_source.py
-    DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
-    COMPONENT "input_python"
-)
-
-GR_PYTHON_INSTALL(
-    FILES
     ramp_hierblock.py
-    DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
-    COMPONENT "input_python"
-)
-
-GR_PYTHON_INSTALL(
-    FILES
     step_hierblock.py
+    Calculator.py
+    Bode.py
+    Roots.py
+    Comparator.py
+    Max_val.py
+    plzr_plot.py
+    Response.py
+    matplotsink.py
+    plot_sink.py
     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
     COMPONENT "input_python"
 )
-
-
-GR_PYTHON_INSTALL(
-     FILES
-     Calculator.py
-     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
-     COMPONENT "input_python"
-)
-
-GR_PYTHON_INSTALL(
-     FILES
-     Bode.py
-     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
-     COMPONENT "input_python"
-)
-
-GR_PYTHON_INSTALL(
-	 FILES
-	 Roots.py
-     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
-     COMPONENT "input_python"
-)
-
-GR_PYTHON_INSTALL(
-     FILES
-	 Comparator.py
-     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
-     COMPONENT "input_python"
-)
-
-GR_PYTHON_INSTALL(
-     FILES
-	 Max_val.py
-     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
-     COMPONENT "input_python"
-)
-
-GR_PYTHON_INSTALL(
-     FILES
-     plzr_plot.py
-     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
-     COMPONENT "input_python"
-)
-
-GR_PYTHON_INSTALL(
-     FILES
-	 Response.py
-     DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
-     COMPONENT "input_python"
-)
-
-GR_PYTHON_INSTALL(
-	  FILES
-	  matplotsink.py
-	  DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
-	  COMPONENT "input_python"
-)
-
-GR_PYTHON_INSTALL(
-	 FILES
-	 plot_sink.py
-	 DESTINATION ${GR_PYTHON_DIR}/gnuradio/input
-	 COMPONENT "input_python"
-)
-
-
-
-
-
-
-
-
-
 
 ########################################################################
 # Handle the unit tests
