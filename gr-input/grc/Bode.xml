@@ -4,27 +4,52 @@
   <key>Bode</key>
   <category>Plots</category>
   <import>import gnuradio.input.Bode</import>
-  <make>gnuradio.input.Bode.Bode($order)</make>
-
-<param>
-   <name>Order of transfer function</name>
-   <key>order</key>
-   <value>1</value>
-   <type>real</type>
-
-</param>
-
-
-
+  <make>#set $parent = $notebook() and 'self.%s.GetPage(%s)'%$notebook() or 'self'
+gnuradio.input.Bode.Bode(
+  $(parent).GetWin(),
+  title=$title,
+  order=$order
+)
+#if not $grid_pos()
+$(parent).Add(self.$(id).win)
+#else
+$(parent).GridAdd(self.$(id).win, $(', '.join(map(str, $grid_pos()))))
+#end if</make>
+  <param>
+    <name>Order of transfer function</name>
+    <key>order</key>
+    <value>1</value>
+    <type>real</type>
+  </param>
+  <param>
+    <name>Title</name>
+    <key>title</key>
+    <value>Scope Plot</value>
+    <type>string</type>
+  </param>
+  <param>
+      <name>Grid Position</name>
+      <key>grid_pos</key>
+      <value></value>
+      <type>grid_pos</type>
+  </param>
+  <param>
+    <name>Notebook</name>
+    <key>notebook</key>
+    <value></value>
+    <type>notebook</type>
+  </param>
   <sink>
-    <name>in</name>
-    <type>float</type>
-    <nports>2</nports>
-</sink>
+     <name>in</name>
+     <type>float</type>
+     <nports>2</nports>
+  </sink>
 
-<doc>
-	This block performs Bode plot of Transfer function defined by Numerator and Denominator block
-	in0 = Numerator 
-	in1 = Denominator
-</doc>
-</block>
+  <doc>
+  	This block performs Bode plot of Transfer function defined by Numerator and Denominator block
+  	in0 = Numerator 
+  	in1 = Denominator
+  </doc>
+
+  </block>
+
