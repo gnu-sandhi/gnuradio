@@ -27,24 +27,22 @@ import time
 
 class Calculator(gr.sync_block):
     """
-    docstring for block add_python
+    Calculator block take the number of inputs from parameter.
+    And also takes the expression in terms of a0,a1,..,an where 0 < n <= 9
+    e.g "a0+a2" is expression where number of inputs will be 2
     """
     def __init__(self,num_inputs):
 	number = num_inputs
 	a = []
 	for i in range(0,number):
             a.append(numpy.float32)
-#	print "value of a",a
         gr.sync_block.__init__(self,
             name="Calculator",
             in_sig=a,
             out_sig=[numpy.float32])
 	    
-	#print "I am over slept"
-        #print len(self.ret_array)
     def set_parameters(self,Exp,num_inputs):
 	self.Exp = Exp
-	#print "This is EXP", Exp
 	self.num_inputs = num_inputs
 
 
@@ -89,11 +87,8 @@ class Calculator(gr.sync_block):
 	    a9 = input_items[9]
 	except IndexError:
 	    pass
-        #out = output_items[0][0]
-	print "This is self.Exp\n",self.Exp
 	
         output_items[0][:] = eval(self.Exp)
-	#print "This is the output value\n", output_items[0][0]
-	#print "I am the oputput add python\n", eval(self.Exp)
+        
         return len(output_items[0])
                                               
