@@ -36,11 +36,6 @@ install(FILES
     COMPONENT "input_python"
 )
 
-install(FILES
-    Transfer_function_Response.xml
-    DESTINATION ${GRC_BLOCKS_DIR}
-    COMPONENT "input_python"
-)
 
 install(FILES
     plot_sink.xml
@@ -66,11 +61,6 @@ install(FILES
     COMPONENT "input_python"
 )
 
-install(FILES
-    Transfer_function_Response.xml
-    DESTINATION ${GRC_BLOCKS_DIR}
-    COMPONENT "input_python"
-)
 
 install(FILES
 	Comparator.xml
